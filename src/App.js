@@ -10,8 +10,11 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import React from 'react'
+import React, { useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { getCurrentLocation } from './store/location/operations';
+import { connect } from 'react-redux';
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -31,8 +34,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+const App = ({ getLocation })  => {
   const classes = useStyles();
+  useEffect(() => getLocation(), [])
   return (
     <div className="App">
       <CssBaseline />
@@ -71,4 +75,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  getLocation: () => dispatch(getCurrentLocation())
+})
+
+export default connect(null, mapDispatchToProps)(App)

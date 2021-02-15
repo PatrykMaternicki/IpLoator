@@ -1,7 +1,13 @@
-const UserLocation = () => {
-  return(
-    <div>Użytownika pozycja</div>
-  )
+import { connect } from 'react-redux';
+
+const UserLocation = ({currentLocation}) => {
+ return (
+   <div>{Object.values(currentLocation).map(item => <p>{item}</p>)}</div>
+ )
 }
 
-export default UserLocation
+const mapStateToProps = (state) => ({
+  currentLocation: state.location.current
+})
+
+export default connect(mapStateToProps, null)(UserLocation)

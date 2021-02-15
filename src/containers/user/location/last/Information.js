@@ -1,3 +1,4 @@
+
 const Information = () => {
  return (
    <div>Informacje o starej lokalizacji</div>
