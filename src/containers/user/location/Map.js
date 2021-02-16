@@ -1,8 +1,11 @@
 import { connect } from 'react-redux';
+import Map from '../../../components/location/Map';
 
 const UserLocation = ({currentLocation}) => {
  return (
-   <div>{Object.values(currentLocation).map(item => <p>{item}</p>)}</div>
+   <div>
+     {Object.values(currentLocation).length > 0 && <Map location={currentLocation}/>}
+   </div>
  )
 }
 

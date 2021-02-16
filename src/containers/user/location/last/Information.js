@@ -1,8 +1,17 @@
 
-const Information = () => {
- return (
-   <div>Informacje o starej lokalizacji</div>
- )
+import { connect } from 'react-redux'
+import Card from '../../../../components/location/Card'
+
+const InformationContainer = ({searchedLocation}) => {
+  return (
+   <div>
+      <Card information={searchedLocation} />
+   </div>
+  )
 }
 
-export default Information
+const mapStateToProps = (state) => ({
+  searchedLocation: state.location.searchedLocation
+})
+
+export default connect(mapStateToProps, null)(InformationContainer)

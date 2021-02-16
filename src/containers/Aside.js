@@ -1,19 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
-import InboxIcon from '@material-ui/icons/Inbox';
+import RoomIcon from '@material-ui/icons/Room';
+import { connect } from 'react-redux'
 
-const drawerWidth = 240;
+const drawerWidth = 340;
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -26,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Aside = () => {
+const AsideContainer = ({ history }) => {
   const classes = useStyles();
-
+  
   return (
     <div className={classes.root}>
       <Drawer
@@ -41,19 +38,12 @@ const Aside = () => {
       >
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          {history.map((item, index) => (
+            <ListItem button key={index}>
+              <ListItemIcon>
+                <RoomIcon />
+              </ListItemIcon>
+              <ListItemText primary={`${item.country} ${item.city} ${item.regionName}`} />
             </ListItem>
           ))}
         </List>
@@ -62,4 +52,8 @@ const Aside = () => {
   );
 }
 
-export default Aside
+const mapStateToProps = (state) => ({
+  history: state.location.history
+})
+
+export default connect(mapStateToProps, null)(AsideContainer)

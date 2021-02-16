@@ -3,9 +3,9 @@ import Navbar from './containers/Navbar'
 import Aside from './containers/Aside';
 import Map from './containers/user/location/Map';
 import Information from './containers/user/location/Information';
-import Search from './containers/user/location/Search';
+import Search from './containers/Search';
 import LastMap from './containers/user/location/last/Map';
-import LastInformation from './containers/user/location/Information'
+import LastInformation from './containers/user/location/last/Information'
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
@@ -14,7 +14,6 @@ import React, { useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { getCurrentLocation } from './store/location/operations';
 import { connect } from 'react-redux';
-
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -27,11 +26,38 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
+    position: 'relative',
+    height: '100%',
+    marginBottom: theme.spacing(1),
+  },
+  paperSearch: {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    whiteSpace: 'nowrap',
+    position: 'relative',
+    height: '100%',
+    marginBottom: theme.spacing(0),
+  },
+  paperMap: {
+    margin: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    whiteSpace: 'nowrap',
+    position: 'relative',
+    height: '100%',
     marginBottom: theme.spacing(1),
   },
   divider: {
     margin: theme.spacing(2, 0),
   },
+  container: {
+    marginTop: theme.spacing(2),
+    maxWidth: 'inherit',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center'
+  }
 }));
 
 const App = ({ getLocation })  => {
@@ -41,11 +67,11 @@ const App = ({ getLocation })  => {
     <div className="App">
       <CssBaseline />
       <Navbar />
+        <Container className={classes.container}>
         <Aside />
-        <Container>
-                  <Grid container spacing={3}>
+        <Grid container xs={8} spacing={3}>
         <Grid item xs={6}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paperMap}>
             <Map />
           </Paper>
         </Grid>
@@ -55,7 +81,7 @@ const App = ({ getLocation })  => {
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paperSearch}>
             <Search />
           </Paper>
         </Grid>
