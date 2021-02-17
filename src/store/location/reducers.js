@@ -1,11 +1,10 @@
 import { default as TYPES } from './types';
 import ErrorMsg from '../../dictonaries/error_message.json';
 import SessionService from '../../helpers/sessionService';
-console.log(SessionService.getValues())
 
 const INIT_STATE = {
-  current: {},
-  searchedLocation: {},
+  current: undefined,
+  searchedLocation: undefined,
   history: SessionService.getValues(),
   errorType: undefined,
   errorMsg: undefined

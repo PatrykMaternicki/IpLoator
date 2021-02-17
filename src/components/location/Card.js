@@ -37,11 +37,10 @@ const useStyles = makeStyles({
 
 
 const LocationCard = ({information}) => {
-  console.log(information)
   const classes = useStyles();
+  console.log(information)
   const bull = <span className={classes.bullet}>•</span>;
   return(
-      <Card className={classes.root}>
         <CardContent>
           <Typography variant="h5" component="h2">
             <LanguageIcon />
@@ -84,7 +83,6 @@ const LocationCard = ({information}) => {
             </ListItem>
           </List>
         </CardContent>
-      </Card>
   )
 }
 

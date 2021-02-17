@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
     position: 'relative',
     height: '100%',
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(0),
+    padding: theme.spacing(2)
   },
   paperSearch: {
     padding: theme.spacing(1),
@@ -71,7 +72,7 @@ const App = ({ getLocation })  => {
         <Aside />
         <Grid container xs={8} spacing={3}>
         <Grid item xs={6}>
-          <Paper className={classes.paperMap}>
+          <Paper className={classes.paper}>
             <Map />
           </Paper>
         </Grid>

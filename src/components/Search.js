@@ -36,7 +36,7 @@ class LocationSearch extends React.Component {
               id="outlined-basic" 
               label="Write IP" 
               variant="outlined" 
-              helperText={this.props.errorMsg}
+              helperText={this.props.errorMsg ? this.props.errorMsg : ' '}
             />
           </Grid>
           <Grid 

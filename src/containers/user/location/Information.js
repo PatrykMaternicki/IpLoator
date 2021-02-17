@@ -1,16 +1,19 @@
+import Preloader from '../../../components/Preloader';
+import CardLocation from '../../../components/location/Card';
 import { connect } from 'react-redux';
-import Card from '../../../components/location/Card'
+import CardLayout from '../../../Layouts/Card';
 
-const Information = ({currentLocation}) => {
- return (
-   <div>
-      {Object.values(currentLocation).length > 0 && <Card information={currentLocation} />}
-   </div>
- )
+const Information = ({currentLocation, stage}) => {
+  return (
+    <CardLayout>
+      { stage !== 'loaded' ? <Preloader state={stage}/> : <CardLocation information={currentLocation} />}
+    </CardLayout>
+  )
 }
 
 const mapStateToProps = (state) => ({
-  currentLocation: state.location.current
+  currentLocation: state.location.current,
+  stage: state.app.stages.location.current
 })
 
 export default connect(mapStateToProps, null)(Information)

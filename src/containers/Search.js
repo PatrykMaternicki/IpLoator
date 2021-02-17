@@ -1,7 +1,8 @@
 import Search from '../components/Search';
 import { connect } from 'react-redux';
 import {searchForIp } from '../store/location/operations';
-import { LocationActions } from '../store/location'
+import { LocationActions } from '../store/location';
+import { AppActions } from '../store/app';
 
 const SearchContainer = ({searchForIp, errorMsg, clearError}) => {
   return (
@@ -20,7 +21,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  searchForIp: (ip) => dispatch(searchForIp(ip)),
+  searchForIp: (ip) => {
+    dispatch(AppActions.setAppStageLocationSearch('loading'))
+    dispatch(searchForIp(ip))
+  },
   clearError: () => {
     dispatch(LocationActions.setLocationErrorType(undefined))
     dispatch(LocationActions.setLocationErrorMsg(undefined))

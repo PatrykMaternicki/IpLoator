@@ -1,17 +1,20 @@
 
 import { connect } from 'react-redux'
-import Card from '../../../../components/location/Card'
+import CardLocation from '../../../../components/location/Card'
+import Preloader from '../../../../components/Preloader';
+import CardLayout from '../../../../Layouts/Card';
 
-const InformationContainer = ({searchedLocation}) => {
+const InformationContainer = ({searchedLocation, stage}) => {
   return (
-   <div>
-      <Card information={searchedLocation} />
-   </div>
+   <CardLayout>
+      {stage !== 'loaded' ? <Preloader state={stage} /> : <CardLocation information={searchedLocation}/>}
+   </CardLayout>
   )
 }
 
 const mapStateToProps = (state) => ({
-  searchedLocation: state.location.searchedLocation
+  searchedLocation: state.location.searchedLocation,
+  stage: state.app.stages.location.searched
 })
 
 export default connect(mapStateToProps, null)(InformationContainer)
