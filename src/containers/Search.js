@@ -1,29 +1,25 @@
 import Search from '../components/Search';
 import { connect } from 'react-redux';
-import {searchForIp } from '../store/location/operations';
+import {searchForQuery } from '../store/location/operations';
 import { LocationActions } from '../store/location';
 import { AppActions } from '../store/app';
 
-const SearchContainer = ({searchForIp, errorMsg, clearError}) => {
-  return (
-    <div>
-      <Search 
-        errorMsg={errorMsg} 
-        clearError={clearError}
-        searchForIp={searchForIp}
-      />
-    </div>
-  )
-}
+const SearchContainer = ({searchForQuery, errorMsg, clearError}) => (
+  <Search 
+    errorMsg={errorMsg} 
+    clearError={clearError}
+    searchForQuery={searchForQuery}
+  />
+)
 
 const mapStateToProps = (state) => ({
   errorMsg: state.location.errorMsg
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  searchForIp: (ip) => {
+  searchForQuery: (query) => {
     dispatch(AppActions.setAppStageLocationSearch('loading'))
-    dispatch(searchForIp(ip))
+    dispatch(searchForQuery(query))
   },
   clearError: () => {
     dispatch(LocationActions.setLocationErrorType(undefined))

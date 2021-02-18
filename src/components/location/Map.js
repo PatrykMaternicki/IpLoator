@@ -14,25 +14,22 @@ const useStyles = makeStyles({
   },
 });
 
-const GoogleMap = (props) => {
-  const classes = useStyles()
-  return (
-    <CardContent className={classes.card}>
-      <Map
-        item
-        xs = { 12 }
-        google = { props.google }
-        zoom = { 14 }
-        initialCenter = {{ lat: `${props.location.lat}`, lng: props.location.lon }}
-      >
+const GoogleMap = (props) => (
+  <CardContent className={useStyles().card}>
+    <Map
+      item
+      xs = { 12 }
+      google = { props.google }
+      zoom = { 14 }
+      initialCenter = {{ lat: `${props.location.lat}`, lng: props.location.lon }}
+    >
       <Marker
         position = {{ lat: props.location.lat, lng: props.location.lon }}
       />
-      </Map>
-    </CardContent>
-  )
-}
+    </Map>
+  </CardContent>
+)
 
 export default GoogleApiWrapper({
-    api: null
+  api: null
 })(GoogleMap)

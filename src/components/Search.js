@@ -13,7 +13,7 @@ class LocationSearch extends React.Component {
   }
 
   handleOnSubmit = (event) => {
-    this.props.searchForIp(this.state.text)
+    this.props.searchForQuery(this.state.text)
     this.setState({text: ''})
     event.preventDefault();
   }

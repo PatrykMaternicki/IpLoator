@@ -13,13 +13,10 @@ const useStyles = makeStyles({
   },
 });
 
-const CardLayout = ({children}) => {
-  const classes = useStyles()
-  return (
-    <Card className={classes.root}>
-      {children}
-    </Card>
-  )
-}
+const CardLayout = ({children}) => (
+  <Card className={useStyles().root}>
+    {children}
+  </Card>
+)
 
 export default CardLayout

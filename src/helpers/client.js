@@ -6,8 +6,8 @@ export default class Client {
     return await response.json()
   }
   
-  static async getLocationWithIp(ip) {
-    const response = await fetch(`${Client.BASE_URL}/${ip}`)
+  static async getLocationWithQuery(query) {
+    const response = await fetch(`${Client.BASE_URL}/${query}`)
     return await response.json()
   } 
 }

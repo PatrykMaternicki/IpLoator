@@ -7,6 +7,11 @@ import uuidGenerator from '../../helpers/uuidGenerator';
 import KeyGenerator from '../../helpers/keyGenerator';
 import SessionService from '../../helpers/sessionService';
 
+const runActionError = (dispatch) => {
+  dispatch(LocationActions.setLocationErrorType('invalid'))
+  dispatch(LocationActions.setLocationErrorMsg())
+  dispatch(AppActions.setAppStageLocationSearch('noData'))
+}
 
 export const getCurrentLocation = () =>
 async (dispatch) => {
@@ -16,20 +21,16 @@ async (dispatch) => {
   dispatch(AppActions.setAppStageLocationCurrent('loaded'))
 } 
 
-export const searchForIp = (ip) =>
+export const searchForQuery = (query) =>
 async (dispatch) => {
-  if(IpValidator.validIp() && UrlValidator.validUrl(ip)) {
-    dispatch(LocationActions.setLocationErrorType('invalid'))
-    dispatch(LocationActions.setLocationErrorMsg())
-    dispatch(AppActions.setAppStageLocationSearch('noData'))
+  if(!IpValidator.validIp(query) && !UrlValidator.validUrl(query)) {
+    runActionError(dispatch)
     return
   }
   
-  const data = await Client.getLocationWithIp(ip)
+  const data = await Client.getLocationWithQuery(query)
   if(data.status === "fail") {
-    dispatch(LocationActions.setLocationErrorType('invalid'))
-    dispatch(LocationActions.setLocationErrorMsg())
-    dispatch(AppActions.setAppStageLocationSearch('noData'))
+    runActionError(dispatch)
   } else {
     dispatch(LocationActions.getLocationWithIp(data))
     dispatch(LocationActions.setLocationToHistory(data))

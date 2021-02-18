@@ -16,8 +16,7 @@ const appReducers = (state = INIT_STATE, action) => {
         return produce(state, draft => {
           draft.stages.location.searched = action.item;
         })
-      case TYPES.APP_STAGE_SET_CURRENT_LOCATION:
-        console.log('dupa') 
+      case TYPES.APP_STAGE_SET_CURRENT_LOCATION: 
         return produce(state, draft => {
           draft.stages.location.current = action.item;
         })

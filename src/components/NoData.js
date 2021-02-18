@@ -14,7 +14,7 @@ const useStyle = makeStyles({
 
 const NoData = () => (
   <CardContent className={useStyle().root}>
-      No Data
+    No Data
   </CardContent>
 )
 

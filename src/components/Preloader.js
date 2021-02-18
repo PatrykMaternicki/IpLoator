@@ -25,12 +25,10 @@ const factory = (state) => {
 }
 
 
-const test = ({state}) => {
-  return (
-    <React.Fragment>
-      {factory(state)}
-    </React.Fragment>
-  )
-}
+const HocPreloader = ({state}) => (
+  <React.Fragment>
+    {factory(state)}
+  </React.Fragment>
+)
 
-export default test
+export default HocPreloader

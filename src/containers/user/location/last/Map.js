@@ -3,13 +3,11 @@ import Map from '../../../../components/location/Map';
 import Preloader from '../../../../components/Preloader';
 import CardLayout from '../../../../Layouts/Card';
 
-const MapLocationCaontainer = ({searchedLocation, stage}) => {
-  return (
-    <CardLayout>
-      { stage !== 'loaded' ? <Preloader state={stage} /> : <Map location={searchedLocation}/>}
-    </CardLayout>
-  )
-}
+const MapLocationCaontainer = ({searchedLocation, stage}) => (
+  <CardLayout>
+    { stage !== 'loaded' ? <Preloader state={stage} /> : <Map location={searchedLocation}/>}
+  </CardLayout>
+)
 
 const mapStateToProps = (state) => ({
   searchedLocation: state.location.searchedLocation,
