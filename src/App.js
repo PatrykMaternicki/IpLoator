@@ -54,12 +54,12 @@ const App = ({ getLocation })  => {
       <Container className={classes.container}>
       <Aside />
       <Grid container xs={8} item spacing={3}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
             <Map />
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
             <Information />
           </Paper>
@@ -69,12 +69,12 @@ const App = ({ getLocation })  => {
             <Search />
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
         <Paper className={classes.paper}>
           <LastMap />
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
             <LastInformation />
           </Paper>

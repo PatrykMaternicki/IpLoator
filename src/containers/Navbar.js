@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 const Navbar = () => (
-  <AppBar position="static">
+  <AppBar position="sticky">
     <Toolbar variant="dense">
       <Typography variant="h6" color="inherit">
         IpLocator
