@@ -16,11 +16,6 @@ import { getCurrentLocation } from './store/location/operations';
 import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
-    gridGap: theme.spacing(3),
-  },
   paper: {
     padding: theme.spacing(1),
     textAlign: 'center',
@@ -40,18 +35,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     marginBottom: theme.spacing(0),
   },
-  paperMap: {
-    margin: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    whiteSpace: 'nowrap',
-    position: 'relative',
-    height: '100%',
-    marginBottom: theme.spacing(1),
-  },
-  divider: {
-    margin: theme.spacing(2, 0),
-  },
   container: {
     marginTop: theme.spacing(2),
     maxWidth: 'inherit',
@@ -68,9 +51,9 @@ const App = ({ getLocation })  => {
     <div className="App">
       <CssBaseline />
       <Navbar />
-        <Container className={classes.container}>
-        <Aside />
-        <Grid container xs={8} spacing={3}>
+      <Container className={classes.container}>
+      <Aside />
+      <Grid container xs={8} item spacing={3}>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             <Map />
@@ -97,7 +80,7 @@ const App = ({ getLocation })  => {
           </Paper>
         </Grid>
       </Grid>
-        </Container>
+      </Container>
     </div>
   );
 }

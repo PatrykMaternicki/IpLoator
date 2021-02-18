@@ -28,7 +28,7 @@ class LocationSearch extends React.Component {
         <Grid container>
           <Grid item xs={8}>
             <TextField
-              className="full"
+              style={{width: '100%'}}
               onChange={this.handleChange}
               onFocus={this.handleFocus}
               value={this.state.text}
