@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/IpLoator/static/js/main.988a0671.chunk.js",
+    "main.js.map": "/IpLoator/static/js/main.988a0671.chunk.js.map",
+    "runtime-main.js": "/IpLoator/static/js/runtime-main.aadc4f3e.js",
+    "runtime-main.js.map": "/IpLoator/static/js/runtime-main.aadc4f3e.js.map",
+    "static/js/2.9f83b9de.chunk.js": "/IpLoator/static/js/2.9f83b9de.chunk.js",
+    "static/js/2.9f83b9de.chunk.js.map": "/IpLoator/static/js/2.9f83b9de.chunk.js.map",
+    "static/js/3.b403cbd0.chunk.js": "/IpLoator/static/js/3.b403cbd0.chunk.js",
+    "static/js/3.b403cbd0.chunk.js.map": "/IpLoator/static/js/3.b403cbd0.chunk.js.map",
+    "index.html": "/IpLoator/index.html",
+    "static/js/2.9f83b9de.chunk.js.LICENSE.txt": "/IpLoator/static/js/2.9f83b9de.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aadc4f3e.js",
+    "static/js/2.9f83b9de.chunk.js",
+    "static/js/main.988a0671.chunk.js"
+  ]
+}
