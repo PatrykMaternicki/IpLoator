@@ -2,6 +2,7 @@ import { default as TYPES } from './types';
 import produce from 'immer';
 
 const INIT_STATE = {
+  showDrawer: true,
   stages: {
     location: {
       current: 'noData',
@@ -20,6 +21,10 @@ const appReducers = (state = INIT_STATE, action) => {
         return produce(state, draft => {
           draft.stages.location.current = action.item;
         })
+      case TYPES.APP_DRAWER_TOGGLE: 
+        return {
+          ...state, showDrawer: !state.showDrawer
+        }
       default: 
         return state  
     }

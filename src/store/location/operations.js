@@ -32,6 +32,7 @@ async (dispatch) => {
   if(data.status === "fail") {
     runActionError(dispatch)
   } else {
+    data.searchedQuery = query
     dispatch(LocationActions.getLocationWithIp(data))
     dispatch(LocationActions.setLocationToHistory(data))
     dispatch(AppActions.setAppStageLocationSearch('loaded'))

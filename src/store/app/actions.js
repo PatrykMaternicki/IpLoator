@@ -8,7 +8,12 @@ const setAppStageLocationSearch = (item) => ({
   type: TYPES.APP_STAGE_SET_SEARCH_LOCATION, item
 })
 
+const toggleDrawer = () => ({
+  type: TYPES.APP_DRAWER_TOGGLE
+})
+
 export default {
   setAppStageLocationCurrent,
-  setAppStageLocationSearch
+  setAppStageLocationSearch,
+  toggleDrawer
 }

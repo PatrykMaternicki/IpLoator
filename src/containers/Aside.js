@@ -1,58 +1,57 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import LocationList from '../components/location/List';
+import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import RoomIcon from '@material-ui/icons/Room';
 import { connect } from 'react-redux'
+import { Divider } from '@material-ui/core';
 
-const drawerWidth = 340;
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = (showDrawer) => makeStyles((theme) => ({
   drawer: {
-    width: drawerWidth,
+    width: showDrawer ? 320 : 1,
+    transition: 'width .5s',
     flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: 320,
     top: '48px'
   },
+  content: {
+    textAlign: 'center'
+  }
 }));
 
-const AsideContainer = ({ history }) => {
-  const classes = useStyles();
-  
+const AsideContainer = ({ history,showDrawer }) => {
+  const classes = useStyles(showDrawer)();
   return (
-    <div className={classes.root}>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <Divider />
-        <List>
-          {history.map((item, index) => (
-            <ListItem button key={index}>
-              <ListItemIcon>
-                <RoomIcon />
-              </ListItemIcon>
-              <ListItemText primary={`${item.country} ${item.city} ${item.regionName}`} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </div>
+    <Drawer
+      className={classes.drawer}
+      open={showDrawer}
+      variant="persistent"
+      classes={{
+        paper: classes.drawerPaper,
+      }}
+      anchor="left"
+    >
+      <List>
+        {history.map((item, index) => (
+        <CardContent
+          key={index}
+          className={classes.content}
+        >
+          <LocationList information={item} />
+          <Divider />
+        </CardContent>
+        ))}
+      </List>
+    </Drawer>
   );
 }
 
 const mapStateToProps = (state) => ({
-  history: state.location.history
+  history: state.location.history,
+  showDrawer: state.app.showDrawer
 })
 
 export default connect(mapStateToProps, null)(AsideContainer)

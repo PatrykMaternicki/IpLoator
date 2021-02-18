@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     maxWidth: 'inherit',
     width: '100%',
     display: 'flex',
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const App = ({ getLocation })  => {
+const App = ({ getLocation, showDrawer })  => {
   const classes = useStyles();
   useEffect(() => getLocation(), [])
   return (
@@ -53,7 +54,7 @@ const App = ({ getLocation })  => {
       <Navbar />
       <Container className={classes.container}>
       <Aside />
-      <Grid container xs={8} item spacing={3}>
+      <Grid container xs={showDrawer ? 8 : 12} md={8} item spacing={3}>
         <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
             <Map />
@@ -70,8 +71,8 @@ const App = ({ getLocation })  => {
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>
-        <Paper className={classes.paper}>
-          <LastMap />
+          <Paper className={classes.paper}>
+            <LastMap />
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -89,4 +90,8 @@ const mapDispatchToProps = (dispatch) => ({
   getLocation: () => dispatch(getCurrentLocation())
 })
 
-export default connect(null, mapDispatchToProps)(App)
+const mapStateToProps = (state) => ({
+  showDrawer: state.app.showDrawer
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
